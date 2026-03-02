@@ -1,0 +1,42 @@
+import random
+
+def play_hangman():
+    words = ["PYTHON", "HANGMAN", "CODE"]
+    secret_word = random.choice(words)
+    max_incorrect_guesses = 6
+    incorrect_guesses = 0
+    guessed_letters = []
+    
+    # Create underscores for the secret word
+    display_word = ["_"] * len(secret_word)
+    
+    print("Welcome to Hangman!")
+    print("Word to guess: " + " ".join(display_word))
+    
+    while incorrect_guesses < max_incorrect_guesses and "_" in display_word:
+        guess = input("Guess a letter: ").upper()
+        
+        if guess in guessed_letters:
+            print("You already guessed that letter.")
+        else:
+            guessed_letters.append(guess)
+            
+            if guess in secret_word:
+                # Reveal the letter in display_word
+                for i in range(len(secret_word)):
+                    if secret_word[i] == guess:
+                        display_word[i] = guess
+                print(" ".join(display_word))
+            else:
+                incorrect_guesses += 1
+                print(f"Wrong guess! {max_incorrect_guesses - incorrect_guesses} attempts left.")
+        
+        print("Guessed letters:", guessed_letters)
+    
+    if "_" not in display_word:
+        print("Congratulations! You won. The word was", secret_word)
+    else:
+        print("Game over! The word was", secret_word)
+
+# Run the game
+play_hangman()
