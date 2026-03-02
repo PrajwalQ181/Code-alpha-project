@@ -1,0 +1,24 @@
+def chatbot():
+    print("🤖 Chatbot started! Type 'bye' to exit.")
+    
+    # Dictionary of predefined responses
+    responses = {
+        "hello": "Hi!",
+        "how are you": "I'm fine, thanks!",
+        "bye": "Goodbye!"
+    }
+    
+    while True:
+        user_input = input("You: ").strip().lower()
+        
+        if user_input in responses:
+            print(f"Bot: {responses[user_input]}")
+        else:
+            print("Hi!:", "I'm fine. thanks!","Good bye" )
+        
+        # Exit loop on 'bye'
+        if user_input == "bye":
+            break
+
+# Run the chatbot
+chatbot()
