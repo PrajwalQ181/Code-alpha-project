@@ -1,0 +1,19 @@
+import os
+import shutil
+
+def move_jpg_files(src_folder, dest_folder):
+    if src_folder == dest_folder:
+        print("⚠️ Source and destination folders are the same. No action taken.")
+        return
+    
+    if not os.path.exists(src_folder):
+        print(f"⚠️ Source folder '{src_folder}' does not exist.")
+        return
+
+    if not os.path.exists(dest_folder):
+        os.makedirs(dest_folder)
+    
+    for filename in os.listdir(src_folder):
+        if filename.endswith(".jpg files"):
+            src_path = os.path.join(src_folder, filename)
+            dest
